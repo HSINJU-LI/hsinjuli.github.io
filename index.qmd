@@ -1,7 +1,18 @@
 ---
-title: "HJL_web"
+title: "Hsin-Ju Li (李欣儒)"
+image: media/headshot.jpeg
+toc: false
+about: 
+  template: jolla
+  image-shape: round
+  image-width: 17em
+  links:
+    - text: LinkedIn
+      href: https://www.linkedin.com/in/hsinjuli/
+    - text: GitHub
+      href: https://github.com/HSINJU-LI
+    - text: Email
+      href: mailto:hsinjuli@ucsb.edu
 ---
 
-This is a Quarto website.
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+Hi! This is Hsin-Ju. I'm currently a PhD student at UCSB geography department.
