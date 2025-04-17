@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "HJL_web"
+  title: "Hsin-Ju Li"
   navbar:
     left:
       - href: index.qmd
@@ -17,6 +17,7 @@ format:
       - brand
     css: styles.css
     toc: true
+    page-layout: full
 
 
 
