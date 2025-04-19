@@ -1,16 +1,16 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Hsin-Ju Li (李欣儒)",
-    "section": "",
-    "text": "Hi! This is Hsin-Ju. I’m currently a PhD student at UCSB geography department."
-  },
-  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
     "text": "About this site"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Hsin-Ju Li (李欣儒)",
+    "section": "",
+    "text": "Hi! This is Hsin-Ju. I’m currently a PhD student at UCSB geography department."
   }
 ]

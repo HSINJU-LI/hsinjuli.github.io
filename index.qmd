@@ -1,6 +1,6 @@
 ---
 title: "Hsin-Ju Li (李欣儒)"
-image: media/headshot.jpeg
+image: media/headshot.jpg
 toc: false
 about: 
   template: jolla
