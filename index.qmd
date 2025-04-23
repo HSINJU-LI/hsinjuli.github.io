@@ -7,11 +7,16 @@ about:
   image-shape: round
   image-width: 17em
   links:
-    - text: LinkedIn
+    - icon: linkedin
+      text: LinkedIn
       href: https://www.linkedin.com/in/hsinjuli/
-    - text: GitHub
+      target: _blank # opens link in a new browser tab
+    - icon: github
+      text: GitHub
       href: https://github.com/HSINJU-LI
-    - text: Email
+      target: _blank # opens link in a new browser tab
+    - icon: envelope  
+      text: Email
       href: mailto:hsinjuli@ucsb.edu
 ---
 
