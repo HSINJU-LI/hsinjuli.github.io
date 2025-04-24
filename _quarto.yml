@@ -5,12 +5,20 @@ project:
 website:
   title: "Hsin-Ju Li"
   navbar:
-    left:
+    right:
       - href: index.qmd
         text: Home
       - about.qmd
       - href: resources.qmd
         text: Resources
+      - #href: #file/path/to/myCV.pdf # providing a relative file path to a pdf will open up a browser-based pdf viewer when clicked
+        text: CV
+        target: _blank
+  page-footer:
+    background: light # or `dark`
+    left: Copyright 2025, Hsin-Ju Li
+    right: This website is built with [{{< fa brands github title="GitHub octocat logo" >}}](https://github.com/HSINJU-LI/hsinjuli.github.io){target=_blank} and [Quarto](https://quarto.org/){target=_blank}
+
 
 format:
   html:
