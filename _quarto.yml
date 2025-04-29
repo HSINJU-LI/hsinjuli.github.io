@@ -23,10 +23,11 @@ website:
 format:
   html:
     theme:
+      - styles.scss
       - cosmo
       - brand
       - minty
-    css: styles.css
+    mainfont: Nunito Sans
     toc: true
     page-layout: full
 
