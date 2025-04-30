@@ -1,0 +1,16 @@
+---
+title: "This is just a post test"
+description: "blog post description (appears underneath the title in smaller text) which is included on the listing page"
+author:
+  - name: Hsin-Ju Li
+    url: https://github.com/HSINJU-LI
+    orcid: 0009-0008-7610-8276
+    affiliation: UCSB Geography
+    affiliation-url: https://www.geog.ucsb.edu/ 
+date: 04-29-2025
+categories: [Quarto] # self-defined categories
+citation: 
+  url: https://HSINJU-LI.github.io/posts/2025-04-29-a_test_post/ 
+image: Tree_of_Life_900.PNG
+draft: false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
+---
