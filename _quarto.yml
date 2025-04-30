@@ -5,10 +5,14 @@ project:
 website:
   title: "Hsin-Ju Li"
   navbar:
+    title: false # override printing your website `title` (e.g. "Sam Csik" on line 6) in the top left corner of your navbar
+    logo: /media/Tree_of_Life.svg
+    logo-alt: "logo of tree of life"
     right:
       - href: index.qmd
         text: Home
       - about.qmd
+      - posts.qmd
       - href: resources.qmd
         text: Resources
       - #href: #file/path/to/myCV.pdf # providing a relative file path to a pdf will open up a browser-based pdf viewer when clicked

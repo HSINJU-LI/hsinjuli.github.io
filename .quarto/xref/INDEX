@@ -7,5 +7,11 @@
   },
   "resources.qmd": {
     "resources.html": "5ec7805e"
+  },
+  "posts.qmd": {
+    "posts.html": "7ddc10de"
+  },
+  "posts/2025-04-29-a_test_post/index.qmd": {
+    "index.html": "0b37e099"
   }
 }

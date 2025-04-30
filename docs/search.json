@@ -7,6 +7,13 @@
     "text": "another title\n\nthis is an &lt;h1&gt; element\n\n\nthis is an &lt;h1&gt; element of class title\n\n\nthis is a &lt;p&gt; element\n\n\nthis is a &lt;p&gt; element of class title\n\n— # three dashes is markdown syntax for creating a horizontal line across your page\n\nThis paragraph is orange.\n\n\nThis paragraph is centered.\n\n\nThis paragraph has no styling.\n\n\nThis level-2 header is centered\n\n\n\nThis level-3 header is both centered and orange\n\n\nThis paragraph is orange and bolded using markdown syntax (yes, you can combine markdown and html!)."
   },
   {
+    "objectID": "posts/2025-04-29-a_test_post/index.html",
+    "href": "posts/2025-04-29-a_test_post/index.html",
+    "title": "This is just a post test",
+    "section": "",
+    "text": "CitationBibTeX citation:@online{li2025,\n  author = {Li, Hsin-Ju},\n  title = {This Is Just a Post Test},\n  date = {2025-04-29},\n  url = {https://HSINJU-LI.github.io/posts/2025-04-29-a_test_post/},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nLi, Hsin-Ju. 2025. “This Is Just a Post Test.” April 29,\n2025. https://HSINJU-LI.github.io/posts/2025-04-29-a_test_post/."
+  },
+  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
@@ -19,5 +26,12 @@
     "title": "Hsin-Ju Li (李欣儒)",
     "section": "",
     "text": "Hi! This is Hsin-Ju. I’m currently a PhD student at UCSB geography department."
+  },
+  {
+    "objectID": "posts.html",
+    "href": "posts.html",
+    "title": "My Blog",
+    "section": "",
+    "text": "This is just a post test\n\n1 min\n\n\nHsin-Ju Li\n\n\nApr 29, 2025\n\n\n\n\n\n\nNo matching items"
   }
 ]
