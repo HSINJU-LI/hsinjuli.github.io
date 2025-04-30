@@ -3,6 +3,8 @@
 //import Google fonts
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
 
+// Fonts
+$sen: "Sen", sans-serif;
 
 // Colors
 $dark-green: #858E79;
@@ -27,6 +29,10 @@ $code-color: $purple; // inline code text color
 
 
 /*-- scss:rules --*/
+h1, h2, h3, h4, h5, h6 {
+  font-family: $sen;
+}
+
 h1, h2 {
   letter-spacing: 1px;
   font-weight: 650; // Google fonts tells you which weights your chosen font family allows for!
@@ -42,4 +48,14 @@ h1, h2 {
 
 .orange-text {
   color: $orange;
+}
+
+.navbar-brand img {
+  height: 80px;
+  width: auto;
+}
+
+.navbar-logo {
+  height: 60px;
+  width: auto;
 }
