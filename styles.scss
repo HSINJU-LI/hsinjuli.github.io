@@ -55,7 +55,14 @@ h1, h2 {
   width: auto;
 }
 
-.navbar-logo {
+.navbar-logo { // this doesn't work
   height: 60px;
   width: auto;
+}
+
+#bio {
+  text-align: center;
+  margin: 0 auto;
+  max-width: 800px; /* nice readable width */
+  padding: 2rem;    /* add some breathing room */
 }
