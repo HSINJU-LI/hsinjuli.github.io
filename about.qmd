@@ -5,24 +5,54 @@ title-block-banner: true
 draft: true
 ---
 
-## {{< fa-earth-americas title="A lightbulb" >}} my research path
+## {{< fa satellite title="satellite" >}} my research path
+I’m currently a Ph.D. student in the [Geography department]( https://www.geog.ucsb.edu/){target="_blank"} at UC Santa Barbara.
 
-I develop and teach data science training curricula for the [Master of Environmental Data Science](https://bren.ucsb.edu/masters-programs/master-environmental-data-science){target="_blank"} (MEDS) program at the [Bren School of Environmental Science & Management](https://bren.ucsb.edu/){target="_blank"}, located at UC Santa Barbara. I am also a co-organizer of [R-Ladies Santa Barbara](https://www.meetup.com/rladies-santa-barbara/){target="_blank"}, a local data science group which works to promote gender diversity in the R community.
-
-<!-- I'm the Data Training Coordinator at the [National Center for Ecological Analysis & Synthesis](https://www.nceas.ucsb.edu/) (NCEAS) and a lecturer at the [Bren School of Environmental Science & Management](https://bren.ucsb.edu/), both located at UC Santa Barbara, where I'm working to develop and teach data science training curricula for the [Master of Environmental Data Science](https://bren.ucsb.edu/masters-programs/master-environmental-data-science) (MEDS) program and other data science initiatives across NCEAS and UCSB. I am also a co-organizer of [R-Ladies Santa Barbara](https://www.meetup.com/rladies-santa-barbara/), a local data science group which works to promote gender diversity in the R community. -->
-
-My background is in marine ecology / ecophysiology -- I had opportunities to study coral disease in Panama and the Florida Keys as an undergrad, then temperature effects on spiny lobster metabolism and foraging behavior in Santa Barbara for my Masters degree. Since the beginning of my time in STEM, I was totally terrified of all things data / coding / data science, but thanks to a super supportive community and some really rad colleagues / instructors, I found my new path in data science education and I absolutely *love* it.
+I earned both my bachelor's and master's degrees in Geography from National Taiwan University (NTU). During my undergraduate years, I discovered a deep passion for being outdoors—hiking the trails around Taipei and observing the natural environment.
 
 :::{.column-margin}
 ```{r}
 #| echo: false
-#| fig-alt: "A classroom full of students face forward towards the instructor, who stands at a podium at the front of the room. Students have their laptops open on their desks. Three large TV screens are illuminated at the front of the classroom, displaying workshop materials."
-knitr::include_graphics("media/Tree_of_life.png")
+#| fig-alt: "A typical day in MCF of Chilan, Taiwan"
+knitr::include_graphics("media/CL.jpg")
 ```
 ::: {.center-text .extra-small-text .dark-gray-text .topbr}
-Teaching MEDS students how to build their own personal websites using Quarto! This was especially fun for me, since Quarto was still such a new tool when I first gave this workshop -- it meant a lot of discovery and learning on-the-fly alongside our students.
+A typical day in Chilan, Taiwan. The photo shot from the top of a flux tower at 14.5K.
 :::
 :::
 
-I'm afforded a lot of flexibility in how I teach and what I teach. My focus is on developing and delivering workshop-style classes that supplement the [MEDS core curriculum](https://ucsb-meds.github.io/courses.html){target="_blank"}, though I'm now (as of Winter 2024) also teaching one of those core courses, [EDS 240: Data Visualization & Communication](https://eds-240-data-viz.github.io/){target="_blank"} (I reflect on building and teaching EDS 240 in [this blog post](posts/2024-04-02-data-viz-course/index.qmd){target="_blank"}). I teach primarily via live-coding (where my computer is hooked up to a screen for participants to see and hear me talk through code in real time as they follow along on their own computers) -- this teaching style was invaluable in my own development as a data scientist, and I really believe that, when done well, live-coding can be a game-changing experience for early-career programmers. I am always looking for new ways to make my teaching style and materials more approachable and inclusive for all learners -- I try to build my content to be stand-alone resources, both for participants to refer back to and also for those learning on their own time. Feel free to check out / reuse / recycle any of my [workshop](talks_workshops.qmd){target="_blank"} and [course](courses.qmd){target="_blank"} materials.
+
+One class that particularly inspired me was **Discovery of Montane Cloud Forests in Taiwan**, which I took in my junior year. I was drawn to the idea that we could do science by combining indoor analysis with outdoor exploration. For my senior project, I conducted a study titled **Analyzing the Factors of Windthrow by Typhoons in Chilan Mountain**, using Landsat imagery and field measurements to investigate what environmental factors (e.g. slope, aspect, elevation etc.) contribute to higher windthrow risks in the montane forests of northern Taiwan.
+
+:::{.column-margin}
+```{r}
+#| echo: false
+#| fig-alt: "a human with a tree"
+knitr::include_graphics("media/me_with_tree.jpg")
+```
+::: {.center-text .extra-small-text .dark-gray-text}
+I am measuring a really gigantic hinoki.
+:::
+:::
+
+That early research experience led me to pursue a master’s degree under the guidance of my advisor, [Choy Huang]( https://sites.google.com/site/choyhuang/){target="_blank"}. My thesis, **Assessment of Spatiotemporal Dynamics of Fog Daily Duration in Montane Cloud Forests of Northeast Taiwan**, aimed to quantify fog frequency in montane cloud forests (MCFs) using Himawari-8 satellite imagery and meteorological field data. I used a random forest model to predict fog occurrence across both spatial and temporal scales.
+For a long time, our understanding of high-frequency fog in montane cloud forests (MCFs) was based mostly on rough estimates. [My work](https://www.sciencedirect.com/science/article/abs/pii/S0168192322000922?via%3Dihub){target="_blank"} was the first to quantify fog frequency in this ecosystem, laying the foundation for future studies on how these forests may be impacted by a warming climate.
+
+Now, as a Ph.D. student, my dissertation focuses on the impacts of drought on oak woodlands in Southern California. From working in environments with over 100% relative humidity to ecosystems where RH drops below 30%, I’ve found that what I enjoy most is the combination of remote sensing analysis and occasional fieldwork. My current research heavily involves **imaging spectroscopy** (a.k.a hyperspectral imagery), which captures over 300 bands across the electromagnetic spectrum, providing rich information about vegetation and ecosystem processes.
+
+:::{.column-margin}
+```{r}
+#| echo: false
+#| fig-alt: "a human with a tree"
+knitr::include_graphics("media/me_with_oak.jpg")
+```
+::: {.center-text .extra-small-text .dark-gray-text}
+I am observing a brunt oak tree.
+:::
+:::
+
+As a first-generation college student, I feel incredibly fortunate to have been supported by mentors, friends, and advisors throughout my academic journey. Their guidance has helped me grow when I felt stuck or uncertain. I truly believe it takes a village to nurture a student into an independent scholar. Although I am still learning, I’d be more than happy to connect with anyone interested in pursuing a similar path in geography or environmental remote sensing.
+
+
+## {{< fa seedling title="seedling" >}} my hobby
 
