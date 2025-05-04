@@ -4,5 +4,11 @@
     "items": [
       "/posts/2025-04-29-a_test_post/index.html"
     ]
+  },
+  {
+    "listing": "/projects.html",
+    "items": [
+      "/projects/2025-06-02-Master_thesis/index.html"
+    ]
   }
 ]

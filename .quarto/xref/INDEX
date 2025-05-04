@@ -13,5 +13,11 @@
   },
   "posts/2025-04-29-a_test_post/index.qmd": {
     "index.html": "0b37e099"
+  },
+  "projects.qmd": {
+    "projects.html": "0c447629"
+  },
+  "projects/2025-06-02-Master_thesis/index.qmd": {
+    "index.html": "0ff252c7"
   }
 }
