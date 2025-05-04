@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>About – Hsin-Ju Li</title>
+<title>Projects – Hsin-Ju Li</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,6 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -69,7 +71,65 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -95,11 +155,11 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./about.html" aria-current="page"> 
+    <a class="nav-link" href="./about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./projects.html"> 
+    <a class="nav-link active" href="./projects.html" aria-current="page"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
@@ -125,14 +185,14 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">About</h1>
-            <p class="subtitle lead">a bit more about me, both inside and outside of my research</p>
+    <div class="quarto-title column-page">
+      <h1 class="title">Projects</h1>
+            <p class="subtitle lead">some of my research projects and side projects</p>
                       </div>
   </div>
     
   
-  <div class="quarto-title-meta column-page-left">
+  <div class="quarto-title-meta column-page">
 
       
     
@@ -143,100 +203,49 @@ ul.task-list li input[type="checkbox"] {
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#my-research-path" id="toc-my-research-path" class="nav-link active" data-scroll-target="#my-research-path"><i class="fa-solid fa-satellite" title="satellite" aria-label="satellite"></i> my research path</a></li>
-  <li><a href="#my-hobby" id="toc-my-hobby" class="nav-link" data-scroll-target="#my-hobby"><i class="fa-solid fa-seedling" title="seedling" aria-label="seedling"></i> my hobby</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block page-columns page-full column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
 
 
 
 
 
-<section id="my-research-path" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="my-research-path"><i class="fa-solid fa-satellite" title="satellite" aria-label="satellite"></i> my research path</h2>
-<p>I’m currently a Ph.D.&nbsp;student in the <a href="https://www.geog.ucsb.edu/" target="_blank">Geography department</a> at UC Santa Barbara.</p>
-<p>I earned both my bachelor’s and master’s degrees in Geography from National Taiwan University (NTU). During my undergraduate years, I discovered a deep passion for being outdoors—hiking the trails around Taipei and observing the natural environment.</p>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="media/CL.jpg" class="img-fluid figure-img" alt="A typical day in MCF of Chilan, Taiwan"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="center-text extra-small-text dark-gray-text topbr">
-<p>A typical day in Chilan, Taiwan. The photo shot from the top of a flux tower at 14.5K.</p>
-</div>
-</div></div><p>One class that particularly inspired me was <strong>Discovery of Montane Cloud Forests in Taiwan</strong>, which I took in my junior year. I was drawn to the idea that we could do science by combining indoor analysis with outdoor exploration. For my senior project, I conducted a study titled <strong>Analyzing the Factors of Windthrow by Typhoons in Chilan Mountain</strong>, using Landsat imagery and field measurements to investigate what environmental factors (e.g.&nbsp;slope, aspect, elevation etc.) contribute to higher windthrow risks in the montane forests of northern Taiwan.</p>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="media/me_with_tree.jpg" class="img-fluid figure-img" alt="a human with a tree"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="center-text extra-small-text dark-gray-text">
-<p>I was measuring a really gigantic hinoki.</p>
-</div>
-</div></div><p>That early research experience led me to pursue a master’s degree under the guidance of my advisor, <a href="https://sites.google.com/site/choyhuang/" target="_blank">Choy Huang</a>. My thesis, <strong>Assessment of Spatiotemporal Dynamics of Fog Daily Duration in Montane Cloud Forests of Northeast Taiwan</strong>, aimed to quantify fog frequency in montane cloud forests (MCFs) using Himawari-8 satellite imagery and meteorological field data. I used a random forest model to predict fog occurrence across both spatial and temporal scales. For a long time, our understanding of high-frequency fog in montane cloud forests (MCFs) was based mostly on rough estimates. <a href="https://www.sciencedirect.com/science/article/abs/pii/S0168192322000922?via%3Dihub" target="_blank">My work</a> was the first to quantify fog frequency in this ecosystem, laying the foundation for future studies on how these forests may be impacted by a warming climate.</p>
-<p>Now, as a Ph.D.&nbsp;student, my dissertation focuses on the impacts of drought on oak woodlands in Southern California. From working in environments with over 100% relative humidity to ecosystems where RH drops below 30%, I’ve found that what I enjoy most is the combination of remote sensing analysis and occasional fieldwork. My current research heavily involves <strong>imaging spectroscopy</strong> (a.k.a hyperspectral imagery), which captures over 300 bands across the electromagnetic spectrum, providing rich information about vegetation and ecosystem processes.</p>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="media/me_with_oak.jpg" class="img-fluid figure-img" alt="a human with a tree"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="center-text extra-small-text dark-gray-text">
-<p>I was observing a brunt oak tree.</p>
-</div>
-</div></div><p>As a first-generation college student, I feel incredibly fortunate to have been supported by mentors, friends, and advisors throughout my academic journey. Their guidance has helped me grow when I felt stuck or uncertain. I truly believe it takes a village to nurture a student into an independent scholar. Although I am still learning, I’d be more than happy to connect with anyone interested in pursuing a similar path in geography or environmental remote sensing.</p>
-</section>
-<section id="my-hobby" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="my-hobby"><i class="fa-solid fa-seedling" title="seedling" aria-label="seedling"></i> my hobby</h2>
-<p>I believe that one of the most important skills to develop during a Ph.D.&nbsp;— beyond research — is maintaining a healthy <strong>work-life balance</strong>. A good balance not only supports well-being but also enhances productivity and creativity.</p>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="media/climbing.jpg" class="img-fluid figure-img" alt="my climbing pic"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="center-text extra-small-text dark-gray-text topbr">
-<p>Outdoor Climbing in SB</p>
-</div>
-</div></div><p>In my free time, I enjoy <strong>running, climbing (mostly top-rope), teaching myself piano, solving Rubik’s cubes of different shapes, reading (Bible, sci-fi, self-improvement, environmental and political topics), playing board games, and hiking</strong>.</p>
-<p>Since Jan.&nbsp;2024, I’ve been following a 3-day-a-week running plan, and in Nov.&nbsp;2024, I finished the Santa Barbara Half marathon with my PB! I also started coordinating a graduate student running club in Fall 2024, helping to build a social and supportive community for fellow graduate students at UCSB.</p>
-<p>I began climbing in Fall 2022 and mostly climb at the UCSB Rec Center. Climbing has been incredibly rewarding — not just physically, but mentally. I’ve learned valuable life lessons from it. Sometimes I encounter a route that feels impossible. But with some trial and error, I often find that I can complete it a few weeks later. Most of us are capable of overcoming challenges that seem insurmountable at first — we just need the right techniques, a shift in perspective, and persistence. Climbing has taught me that many of the barriers we face are not real limits, but illusions.</p>
-<p><strong>I only wish there were more hours in the day to enjoy all the things I love.</strong> <i class="fa-solid fa-mug-hot" title="mug" aria-label="mug-hot"></i></p>
 
 
-</section>
 
-</main> <!-- /main -->
+
+<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-categories="UmVzZWFyY2g=" data-listing-date-sort="1746255600000" data-listing-file-modified-sort="1746339535058" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<a href="./projects/2025-06-02-Master_thesis/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./projects/2025-06-02-Master_thesis/CL_fog.jpg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Spatial and temporal dynamics of fog in MCFs Taiwan
+</h5>
+<div class="card-text listing-description delink">
+<p>blog post description (appears underneath the title in smaller text) which is included on the listing pag&gt;</p>
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Hsin-Ju Li
+</div>
+<div class="listing-date">
+May 3, 2025
+</div>
+</div>
+</div>
+</div></a>
+</div>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

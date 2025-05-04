@@ -14,20 +14,6 @@
     "text": "CitationBibTeX citation:@online{li2025,\n  author = {Li, Hsin-Ju},\n  title = {This Is Just a Post Test},\n  date = {2025-04-29},\n  url = {https://HSINJU-LI.github.io/posts/2025-04-29-a_test_post/},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nLi, Hsin-Ju. 2025. “This Is Just a Post Test.” April 29,\n2025. https://HSINJU-LI.github.io/posts/2025-04-29-a_test_post/."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Hsin-Ju Li (李欣儒)",
-    "section": "",
-    "text": "Hi, I’m Hsin-Ju Li! I’m currently a Ph.D. student in the Geography Department at UC Santa Barbara. My research focuses on using both active and passive remote sensing data to monitor environmental changes across landscapes and through time.\nOutside of work, I’m an avid climber and runner who also enjoys playing board games with friends. I love trying new things and exploring new experiences!\nFeel free to poke around to learn more about me and my work!"
-  },
-  {
-    "objectID": "posts.html",
-    "href": "posts.html",
-    "title": "My Blog",
-    "section": "",
-    "text": "This is just a post test\n\n1 min\n\n\nHsin-Ju Li\n\n\nApr 29, 2025\n\n\n\n\n\n\nNo matching items"
-  },
-  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
@@ -47,5 +33,33 @@
     "title": "About",
     "section": " my hobby",
     "text": "my hobby\nI believe that one of the most important skills to develop during a Ph.D. — beyond research — is maintaining a healthy work-life balance. A good balance not only supports well-being but also enhances productivity and creativity.\n\n\n\n\n\n\n\n\n\n\n\n\nOutdoor Climbing in SB\n\nIn my free time, I enjoy running, climbing (mostly top-rope), teaching myself piano, solving Rubik’s cubes of different shapes, reading (Bible, sci-fi, self-improvement, environmental and political topics), playing board games, and hiking.\nSince Jan. 2024, I’ve been following a 3-day-a-week running plan, and in Nov. 2024, I finished the Santa Barbara Half marathon with my PB! I also started coordinating a graduate student running club in Fall 2024, helping to build a social and supportive community for fellow graduate students at UCSB.\nI began climbing in Fall 2022 and mostly climb at the UCSB Rec Center. Climbing has been incredibly rewarding — not just physically, but mentally. I’ve learned valuable life lessons from it. Sometimes I encounter a route that feels impossible. But with some trial and error, I often find that I can complete it a few weeks later. Most of us are capable of overcoming challenges that seem insurmountable at first — we just need the right techniques, a shift in perspective, and persistence. Climbing has taught me that many of the barriers we face are not real limits, but illusions.\nI only wish there were more hours in the day to enjoy all the things I love."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Hsin-Ju Li (李欣儒)",
+    "section": "",
+    "text": "Hi, I’m Hsin-Ju Li! I’m currently a Ph.D. student in the Geography Department at UC Santa Barbara. My research focuses on using both active and passive remote sensing data to monitor environmental changes across landscapes and through time.\nOutside of work, I’m an avid climber and runner who also enjoys playing board games with friends. I love trying new things and exploring new experiences!\nFeel free to poke around to learn more about me and my work!"
+  },
+  {
+    "objectID": "posts.html",
+    "href": "posts.html",
+    "title": "Blog",
+    "section": "",
+    "text": "This is just a post test\n\n1 min\n\n\nHsin-Ju Li\n\n\nApr 29, 2025\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
+    "section": "",
+    "text": "Spatial and temporal dynamics of fog in MCFs Taiwan\n\n\nblog post description (appears underneath the title in smaller text) which is included on the listing pag&gt;\n\n\n\nHsin-Ju Li\n\n\nMay 3, 2025\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "projects/2025-06-02-Master_thesis/index.html",
+    "href": "projects/2025-06-02-Master_thesis/index.html",
+    "title": "Spatial and temporal dynamics of fog in MCFs Taiwan",
+    "section": "",
+    "text": "CitationBibTeX citation:@online{li2025,\n  author = {Li, Hsin-Ju},\n  title = {Spatial and Temporal Dynamics of Fog in {MCFs} {Taiwan}},\n  date = {2025-05-03},\n  url = {https://HSINJU-LI.github.io/projects/2025-06-02-Master_thesis/},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nLi, Hsin-Ju. 2025. “Spatial and Temporal Dynamics of Fog in MCFs\nTaiwan.” May 3, 2025. https://HSINJU-LI.github.io/projects/2025-06-02-Master_thesis/."
   }
 ]
