@@ -2,7 +2,7 @@
 title: "About"
 subtitle: "a bit more about me, both inside and outside of my research"
 title-block-banner: true
-draft: true
+draft: false
 ---
 
 ## {{< fa satellite title="satellite" >}} my research path
@@ -31,7 +31,7 @@ One class that particularly inspired me was **Discovery of Montane Cloud Forests
 knitr::include_graphics("media/me_with_tree.jpg")
 ```
 ::: {.center-text .extra-small-text .dark-gray-text}
-I am measuring a really gigantic hinoki.
+I was measuring a really gigantic hinoki.
 :::
 :::
 
@@ -47,7 +47,7 @@ Now, as a Ph.D. student, my dissertation focuses on the impacts of drought on oa
 knitr::include_graphics("media/me_with_oak.jpg")
 ```
 ::: {.center-text .extra-small-text .dark-gray-text}
-I am observing a brunt oak tree.
+I was observing a brunt oak tree.
 :::
 :::
 
@@ -55,4 +55,24 @@ As a first-generation college student, I feel incredibly fortunate to have been 
 
 
 ## {{< fa seedling title="seedling" >}} my hobby
+I believe that one of the most important skills to develop during a Ph.D. — beyond research — is maintaining a healthy **work-life balance**. A good balance not only supports well-being but also enhances productivity and creativity.
+
+:::{.column-margin}
+```{r}
+#| echo: false
+#| fig-alt: "my climbing pic"
+knitr::include_graphics("media/climbing.jpg")
+```
+::: {.center-text .extra-small-text .dark-gray-text .topbr}
+Outdoor Climbing in SB
+:::
+:::
+
+In my free time, I enjoy **running, climbing (mostly top-rope), teaching myself piano, solving Rubik’s cubes of different shapes, reading (Bible, sci-fi, self-improvement, environmental and political topics), playing board games, and hiking**. 
+
+Since Jan. 2024, I’ve been following a 3-day-a-week running plan, and in Nov. 2024, I finished the Santa Barbara Half marathon with my PB! I also started coordinating a graduate student running club in Fall 2024, helping to build a social and supportive community for fellow graduate students at UCSB.
+
+I began climbing in Fall 2022 and mostly climb at the UCSB Rec Center. Climbing has been incredibly rewarding — not just physically, but mentally. I've learned valuable life lessons from it. Sometimes I encounter a route that feels impossible. But with some trial and error, I often find that I can complete it a few weeks later. Most of us are capable of overcoming challenges that seem insurmountable at first — we just need the right techniques, a shift in perspective, and persistence. Climbing has taught me that many of the barriers we face are not real limits, but illusions.
+
+**I only wish there were more hours in the day to enjoy all the things I love.** {{< fa mug-hot title="mug" >}}
 
