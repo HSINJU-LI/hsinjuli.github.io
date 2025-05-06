@@ -12,7 +12,7 @@ categories: [Research] # self-defined categories
 citation:
   url: https://HSINJU-LI.github.io/projects/2025-06-02-Master_thesis/
 image: CL_fog.jpg
-draft: true # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
+draft: false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
 ---
 
 ## Paper link
