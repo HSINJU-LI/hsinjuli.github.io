@@ -9,8 +9,8 @@ author:
     affiliation-url: https://www.geog.ntu.edu.tw/index.php/en/
 date: 05-03-2025
 categories: [Research] # self-defined categories
-citation:
-  url: https://HSINJU-LI.github.io/projects/2025-06-02-Master_thesis/
+#citation:
+#  url: https://HSINJU-LI.github.io/projects/2025-06-02-Master_thesis/
 image: CL_fog.jpg
 draft: false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
 ---
@@ -20,7 +20,7 @@ Welcome to contact me for a copy.
 
 [Li, H. J., Lo, M. H., Juang, J. Y., Wang, J., & Huang, C. Y. (2022). Assessment of spatiotemporal dynamics of diurnal fog occurrence in subtropical montane cloud forests. Agricultural and Forest Meteorology, 317, 108899.](https://www.sciencedirect.com/science/article/abs/pii/S0168192322000922?via%3Dihub)
 
-## A short introduction to the paper
+## Abstract
 ### 1. Background
 Montane cloud forests (MCFs) are frequently immersed in low-altitude clouds or fog. The diurnal (defined as 07:00–16:50 local time) cycle of fog is particularly important for regulating the carbon, water and energy cycles of these ecosystems. Elevated temperatures may alter the spatiotemporal dynamics of fog and have cascading impacts on MCFs. Therefore, systematic monitoring of fog occurrence is essential for understanding the ramifications of climate change on these unique forests.
 
@@ -38,11 +38,56 @@ Fog was determined to be more abundant in terms of probability, frequency and du
 knitr::include_graphics("fig.png")
 ```
 ::: {.center-text .small-text}
-With the magic of machine learning models, we were able to estimate fog probability across time and space! Each column in the image represents each meteorological station.
+With the power of machine learning models, we were able to estimate fog probability across time and space! Each column in the image represents each meteorological station.
 :::
 
-## Analysis and methods I learned from this project
-- A workflow of cleaning raw data, organizing data, inputing to models, comparing results from multiple models
-- Computed solar zenith angle at any time point and location
-- Download Himawari-8 data
-- Deal with circular variables
+## What I learned from this project
+1. A workflow of cleaning raw data, organizing data, inputing to models, comparing results from multiple models
+2. Computed solar zenith angle at any time point and location
+3. Download Himawari-8 data
+4. [Deal with circular variables](#circular)
+
+### Deal with circular variables {#circular}
+
+#### What is circular variables?
+
+Circular variables are variables with cycle characteristics—for example, direction (from 0° to 360°), time (from 0 to 23 hr, or January to December). The beginning and the end of the variables are close to each other. 
+
+If you analyze these kinds of data as if they were normal linear variables (such as temperature, slope…), the results would be unexplainable.
+
+For scientists in fields like ecology, geology, or geography, it is common to encounter circular variables. However, solutions for handling them are not widely discussed.
+
+#### Ways to handle circular variables
+
+##### 1. Classification
+
+The most intuitive way is to classify the circular variables, allowing you to add classified variables into your linear models. 
+
+For example, direction data can be classified into 4 categories:
+
+- 0–45° → Class 1  
+- 45–90° → Class 2  
+- and so on.
+
+##### 2. Trigonometric function
+
+Another method is to project the circular variables onto a unit circle and convert them to two-dimensional (x, y) variables. This maintains the cyclical nature of the original variables.
+
+Example in R using day of year from 1 to 365:
+
+```{r}
+doy_test <- c(1:365)
+de_doy <- 360 * doy_test / length(doy_test)  # Projecting to unit circle and showing as angle (deg)
+plot(sin(de_doy), cos(de_doy))
+```
+Here, `sin(de_doy)` and `cos(de_doy)` become two new variables representing `doy_test`.
+
+#### Circular statistics
+
+If you need to compute means or variances of circular variables, Pewsey et al. (2013) is a recommended read. The book also covers regression models for estimating circular variables.
+
+Additionally, you can consider applying **Rayleigh and Watson Tests** on circular data.
+
+#### References
+- [Use of circular predictors in linear regression](https://stats.stackexchange.com/questions/148380/use-of-circular-predictors-in-linear-regression){target="_blank"}
+- Pewsey, A., Neuhäuser, M., & Ruxton, G. D. (2013). Circular statistics in R. Oxford University Press.

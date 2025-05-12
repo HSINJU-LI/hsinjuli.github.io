@@ -23,6 +23,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -180,13 +215,16 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#paper-link" id="toc-paper-link" class="nav-link active" data-scroll-target="#paper-link">Paper link</a></li>
-  <li><a href="#a-short-introduction-to-the-paper" id="toc-a-short-introduction-to-the-paper" class="nav-link" data-scroll-target="#a-short-introduction-to-the-paper">A short introduction to the paper</a>
+  <li><a href="#abstract" id="toc-abstract" class="nav-link" data-scroll-target="#abstract">Abstract</a>
   <ul class="collapse">
   <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background">1. Background</a></li>
   <li><a href="#mathods" id="toc-mathods" class="nav-link" data-scroll-target="#mathods">2. Mathods</a></li>
   <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">3. Results</a></li>
   </ul></li>
-  <li><a href="#analysis-and-methods-i-learned-from-this-project" id="toc-analysis-and-methods-i-learned-from-this-project" class="nav-link" data-scroll-target="#analysis-and-methods-i-learned-from-this-project">Analysis and methods I learned from this project</a></li>
+  <li><a href="#what-i-learned-from-this-project" id="toc-what-i-learned-from-this-project" class="nav-link" data-scroll-target="#what-i-learned-from-this-project">What I learned from this project</a>
+  <ul class="collapse">
+  <li><a href="#circular" id="toc-circular" class="nav-link" data-scroll-target="#circular">Deal with circular variables</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -202,8 +240,8 @@ ul.task-list li input[type="checkbox"] {
 <p>Welcome to contact me for a copy.</p>
 <p><a href="https://www.sciencedirect.com/science/article/abs/pii/S0168192322000922?via%3Dihub">Li, H. J., Lo, M. H., Juang, J. Y., Wang, J., &amp; Huang, C. Y. (2022). Assessment of spatiotemporal dynamics of diurnal fog occurrence in subtropical montane cloud forests. Agricultural and Forest Meteorology, 317, 108899.</a></p>
 </section>
-<section id="a-short-introduction-to-the-paper" class="level2">
-<h2 class="anchored" data-anchor-id="a-short-introduction-to-the-paper">A short introduction to the paper</h2>
+<section id="abstract" class="level2">
+<h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
 <section id="background" class="level3">
 <h3 class="anchored" data-anchor-id="background">1. Background</h3>
 <p>Montane cloud forests (MCFs) are frequently immersed in low-altitude clouds or fog. The diurnal (defined as 07:00–16:50 local time) cycle of fog is particularly important for regulating the carbon, water and energy cycles of these ecosystems. Elevated temperatures may alter the spatiotemporal dynamics of fog and have cascading impacts on MCFs. Therefore, systematic monitoring of fog occurrence is essential for understanding the ramifications of climate change on these unique forests.</p>
@@ -225,35 +263,77 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="center-text small-text">
-<p>With the magic of machine learning models, we were able to estimate fog probability across time and space! Each column in the image represents each meteorological station.</p>
+<p>With the power of machine learning models, we were able to estimate fog probability across time and space! Each column in the image represents each meteorological station.</p>
 </div>
 </section>
 </section>
-<section id="analysis-and-methods-i-learned-from-this-project" class="level2">
-<h2 class="anchored" data-anchor-id="analysis-and-methods-i-learned-from-this-project">Analysis and methods I learned from this project</h2>
-<ul>
+<section id="what-i-learned-from-this-project" class="level2">
+<h2 class="anchored" data-anchor-id="what-i-learned-from-this-project">What I learned from this project</h2>
+<ol type="1">
 <li>A workflow of cleaning raw data, organizing data, inputing to models, comparing results from multiple models</li>
 <li>Computed solar zenith angle at any time point and location</li>
 <li>Download Himawari-8 data</li>
-<li>Deal with circular variables</li>
+<li><a href="#circular">Deal with circular variables</a></li>
+</ol>
+<section id="circular" class="level3">
+<h3 class="anchored" data-anchor-id="circular">Deal with circular variables</h3>
+<section id="what-is-circular-variables" class="level4">
+<h4 class="anchored" data-anchor-id="what-is-circular-variables">What is circular variables?</h4>
+<p>Circular variables are variables with cycle characteristics—for example, direction (from 0° to 360°), time (from 0 to 23 hr, or January to December). The beginning and the end of the variables are close to each other.</p>
+<p>If you analyze these kinds of data as if they were normal linear variables (such as temperature, slope…), the results would be unexplainable.</p>
+<p>For scientists in fields like ecology, geology, or geography, it is common to encounter circular variables. However, solutions for handling them are not widely discussed.</p>
+</section>
+<section id="ways-to-handle-circular-variables" class="level4">
+<h4 class="anchored" data-anchor-id="ways-to-handle-circular-variables">Ways to handle circular variables</h4>
+<section id="classification" class="level5">
+<h5 class="anchored" data-anchor-id="classification">1. Classification</h5>
+<p>The most intuitive way is to classify the circular variables, allowing you to add classified variables into your linear models.</p>
+<p>For example, direction data can be classified into 4 categories:</p>
+<ul>
+<li>0–45° → Class 1<br>
+</li>
+<li>45–90° → Class 2<br>
+</li>
+<li>and so on.</li>
+</ul>
+</section>
+<section id="trigonometric-function" class="level5">
+<h5 class="anchored" data-anchor-id="trigonometric-function">2. Trigonometric function</h5>
+<p>Another method is to project the circular variables onto a unit circle and convert them to two-dimensional (x, y) variables. This maintains the cyclical nature of the original variables.</p>
+<p>Example in R using day of year from 1 to 365:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>doy_test <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">365</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>de_doy <span class="ot">&lt;-</span> <span class="dv">360</span> <span class="sc">*</span> doy_test <span class="sc">/</span> <span class="fu">length</span>(doy_test)  <span class="co"># Projecting to unit circle and showing as angle (deg)</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">sin</span>(de_doy), <span class="fu">cos</span>(de_doy))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Here, <code>sin(de_doy)</code> and <code>cos(de_doy)</code> become two new variables representing <code>doy_test</code>.</p>
+</section>
+</section>
+<section id="circular-statistics" class="level4">
+<h4 class="anchored" data-anchor-id="circular-statistics">Circular statistics</h4>
+<p>If you need to compute means or variances of circular variables, Pewsey et al.&nbsp;(2013) is a recommended read. The book also covers regression models for estimating circular variables.</p>
+<p>Additionally, you can consider applying <strong>Rayleigh and Watson Tests</strong> on circular data.</p>
+</section>
+<section id="references" class="level4">
+<h4 class="anchored" data-anchor-id="references">References</h4>
+<ul>
+<li><a href="https://stats.stackexchange.com/questions/148380/use-of-circular-predictors-in-linear-regression" target="_blank">Use of circular predictors in linear regression</a></li>
+<li>Pewsey, A., Neuhäuser, M., &amp; Ruxton, G. D. (2013). Circular statistics in R. Oxford University Press.</li>
 </ul>
 
 
 </section>
+</section>
+</section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{li2025,
-  author = {Li, Hsin-Ju},
-  title = {Assessment of Spatiotemporal Dynamics of Diurnal Fog
-    Occurrence in Subtropical Montane Cloud Forests},
-  date = {2025-05-03},
-  url = {https://HSINJU-LI.github.io/projects/2025-06-02-Master_thesis/},
-  langid = {en}
-}
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-li2025" class="csl-entry quarto-appendix-citeas" role="listitem">
-Li, Hsin-Ju. 2025. <span>“Assessment of Spatiotemporal Dynamics of
-Diurnal Fog Occurrence in Subtropical Montane Cloud Forests.”</span> May
-3, 2025. <a href="https://HSINJU-LI.github.io/projects/2025-06-02-Master_thesis/">https://HSINJU-LI.github.io/projects/2025-06-02-Master_thesis/</a>.
-</div></div></section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
