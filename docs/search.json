@@ -7,6 +7,34 @@
     "text": "another title\n\nthis is an &lt;h1&gt; element\n\n\nthis is an &lt;h1&gt; element of class title\n\n\nthis is a &lt;p&gt; element\n\n\nthis is a &lt;p&gt; element of class title\n\n— # three dashes is markdown syntax for creating a horizontal line across your page\n\nThis paragraph is orange.\n\n\nThis paragraph is centered.\n\n\nThis paragraph has no styling.\n\n\nThis level-2 header is centered\n\n\n\nThis level-3 header is both centered and orange\n\n\nThis paragraph is orange and bolded using markdown syntax (yes, you can combine markdown and html!)."
   },
   {
+    "objectID": "projects/2025-05-03-Master_thesis/index.html",
+    "href": "projects/2025-05-03-Master_thesis/index.html",
+    "title": "Assessment of spatiotemporal dynamics of diurnal fog occurrence in subtropical montane cloud forests",
+    "section": "",
+    "text": "Welcome to contact me for a copy.\nLi, H. J., Lo, M. H., Juang, J. Y., Wang, J., & Huang, C. Y. (2022). Assessment of spatiotemporal dynamics of diurnal fog occurrence in subtropical montane cloud forests. Agricultural and Forest Meteorology, 317, 108899."
+  },
+  {
+    "objectID": "projects/2025-05-03-Master_thesis/index.html#paper-link",
+    "href": "projects/2025-05-03-Master_thesis/index.html#paper-link",
+    "title": "Assessment of spatiotemporal dynamics of diurnal fog occurrence in subtropical montane cloud forests",
+    "section": "",
+    "text": "Welcome to contact me for a copy.\nLi, H. J., Lo, M. H., Juang, J. Y., Wang, J., & Huang, C. Y. (2022). Assessment of spatiotemporal dynamics of diurnal fog occurrence in subtropical montane cloud forests. Agricultural and Forest Meteorology, 317, 108899."
+  },
+  {
+    "objectID": "projects/2025-05-03-Master_thesis/index.html#a-short-introduction-to-the-paper",
+    "href": "projects/2025-05-03-Master_thesis/index.html#a-short-introduction-to-the-paper",
+    "title": "Assessment of spatiotemporal dynamics of diurnal fog occurrence in subtropical montane cloud forests",
+    "section": "A short introduction to the paper",
+    "text": "A short introduction to the paper\n\n1. Background\nMontane cloud forests (MCFs) are frequently immersed in low-altitude clouds or fog. The diurnal (defined as 07:00–16:50 local time) cycle of fog is particularly important for regulating the carbon, water and energy cycles of these ecosystems. Elevated temperatures may alter the spatiotemporal dynamics of fog and have cascading impacts on MCFs. Therefore, systematic monitoring of fog occurrence is essential for understanding the ramifications of climate change on these unique forests.\n\n\n2. Mathods\nThis study aims to quantify three years (2018–2020) of diurnal fog occurrence with high spatiotemporal (5 km, 10 minutes) resolutions in subtropical MCF in northeast Taiwan. Four open-sky observation stations were installed along an elevation gradient (1151, 1514, 1670 and 1811 m a.s.l.) within the cloud band to record meteorological data including rainfall, air temperature and relative humidity. We also acquired spatiotemporally-corresponding photosynthetic photon flux density from the geostationary Himawari-8 satellite and derived solar zenith angle for each station. We utilized these ground and satellite meteorological attributes to model fog occurrence using seven machine learning methods. By referring to time-lapse images, the performance of random forests was determined to be superior compared to other approaches and was therefore selected to quantify spatiotemporal dynamics of fog occurrence.\n\n\n3. Results\nFog was determined to be more abundant in terms of probability, frequency and duration in mid-elevations when compared to the lower and higher ends. Temporal analysis demonstrated that overall seasonality was pronounced with higher fog abundance in the afternoons and cold months but varied from station to station. In addition, three-year fog duration and event variability for each month were notable for all stations; the foggiest station was at 1670 m a.s.l. This study demonstrates the feasibility of using machine learning to quantify spatiotemporal dynamics of fog using cross-scale meteorological attributes, which may facilitate monitoring the impact of climate change on MCFs.\n\n\n\n\n\n\n\n\n\n\nWith the magic of machine learning models, we were able to estimate fog probability across time and space! Each column in the image represents each meteorological station."
+  },
+  {
+    "objectID": "projects/2025-05-03-Master_thesis/index.html#analysis-and-methods-i-learned-from-this-project",
+    "href": "projects/2025-05-03-Master_thesis/index.html#analysis-and-methods-i-learned-from-this-project",
+    "title": "Assessment of spatiotemporal dynamics of diurnal fog occurrence in subtropical montane cloud forests",
+    "section": "Analysis and methods I learned from this project",
+    "text": "Analysis and methods I learned from this project\n\nA workflow of cleaning raw data, organizing data, inputing to models, comparing results from multiple models\nComputed solar zenith angle at any time point and location\nDownload Himawari-8 data\nDeal with circular variables"
+  },
+  {
     "objectID": "posts/2025-04-29-a_test_post/index.html",
     "href": "posts/2025-04-29-a_test_post/index.html",
     "title": "This is just a post test",
@@ -53,6 +81,6 @@
     "href": "projects.html",
     "title": "Projects",
     "section": "",
-    "text": "No matching items"
+    "text": "Assessment of spatiotemporal dynamics of diurnal fog occurrence in subtropical montane cloud forests\n\n\nThis study used machine learning models to estimate fog frequency across time and space in MCFs Taiwan\n\n\n\nHsin-Ju Li\n\n\nMay 3, 2025\n\n\n\n\n\n\nNo matching items"
   }
 ]
