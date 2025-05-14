@@ -13,6 +13,8 @@ listing:
   #categories: numbered
   sort-ui: false
   filter-ui: false
+  categories: true # allows you to sort posts by assigned categories
+  fields: [image, date, title, author, reading-time]
 page-layout: full
 title-block-banner: true
 ---
