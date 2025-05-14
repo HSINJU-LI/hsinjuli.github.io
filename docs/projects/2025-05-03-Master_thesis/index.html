@@ -10,7 +10,7 @@
 <meta name="dcterms.date" content="2025-05-03">
 <meta name="description" content="This study used machine learning models to estimate fog frequency across time and space in MCFs Taiwan">
 
-<title>Assessment of spatiotemporal dynamics of diurnal fog occurrence in subtropical montane cloud forests – Hsin-Ju Li</title>
+<title>Spatiotemporal Dynamics of Diurnal Fog in MCFs – Hsin-Ju Li</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -164,7 +164,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-page-left">
-      <h1 class="title">Assessment of spatiotemporal dynamics of diurnal fog occurrence in subtropical montane cloud forests</h1>
+      <h1 class="title">Spatiotemporal Dynamics of Diurnal Fog in MCFs</h1>
                   <div>
         <div class="description">
           This study used machine learning models to estimate fog frequency across time and space in MCFs Taiwan
@@ -223,6 +223,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#what-i-learned-from-this-project" id="toc-what-i-learned-from-this-project" class="nav-link" data-scroll-target="#what-i-learned-from-this-project">What I learned from this project</a>
   <ul class="collapse">
+  <li><a href="#SZA" id="toc-SZA" class="nav-link" data-scroll-target="#SZA">Computed solar zenith angle at any time point and location</a></li>
   <li><a href="#circular" id="toc-circular" class="nav-link" data-scroll-target="#circular">Deal with circular variables</a></li>
   </ul></li>
   </ul>
@@ -271,10 +272,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="what-i-learned-from-this-project">What I learned from this project</h2>
 <ol type="1">
 <li>A workflow of cleaning raw data, organizing data, inputing to models, comparing results from multiple models</li>
-<li>Computed solar zenith angle at any time point and location</li>
+<li><a href="#SZA">Computed solar zenith angle at any time point and location</a></li>
 <li>Download Himawari-8 data</li>
 <li><a href="#circular">Deal with circular variables</a></li>
 </ol>
+<section id="SZA" class="level3">
+<h3 class="anchored" data-anchor-id="SZA">Computed solar zenith angle at any time point and location</h3>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SZA.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="center-text small-text">
+<p>a SZA fig.</p>
+</div>
+</section>
 <section id="circular" class="level3">
 <h3 class="anchored" data-anchor-id="circular">Deal with circular variables</h3>
 <section id="what-is-circular-variables" class="level4">
@@ -308,7 +324,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>

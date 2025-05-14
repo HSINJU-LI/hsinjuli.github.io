@@ -1,5 +1,5 @@
 ---
-title: "Assessment of spatiotemporal dynamics of diurnal fog occurrence in subtropical montane cloud forests"
+title: "Spatiotemporal Dynamics of Diurnal Fog in MCFs"
 description: "This study used machine learning models to estimate fog frequency across time and space in MCFs Taiwan"
 author:
   - name: Hsin-Ju Li
@@ -43,9 +43,23 @@ With the power of machine learning models, we were able to estimate fog probabil
 
 ## What I learned from this project
 1. A workflow of cleaning raw data, organizing data, inputing to models, comparing results from multiple models
-2. Computed solar zenith angle at any time point and location
+2. [Computed solar zenith angle at any time point and location](#SZA)
 3. Download Himawari-8 data
 4. [Deal with circular variables](#circular)
+
+### Computed solar zenith angle at any time point and location {#SZA}
+
+```{r}
+#| eval: true
+#| echo: false
+#| out-width: "80%"
+#| fig-align: "center"
+knitr::include_graphics("SZA.png")
+```
+
+:::{.center-text .small-text}
+a SZA fig.
+:::
 
 ### Deal with circular variables {#circular}
 
