@@ -48,6 +48,9 @@ With the power of machine learning models, we were able to estimate fog probabil
 4. [Deal with circular variables](#circular)
 
 ### Computed solar zenith angle at any time point and location {#SZA}
+The R code provided estimates theoretical solar radiation for any time and location on Earth. This is useful for understanding the Earth’s energy budget, ecosystem monitoring, and renewable energy utilization.
+
+A clearness parameter, which represents cloudiness of the sky, is needed to calculate solar radiation. The parameter is stored in “[satelliteIndex2018.csv](https://github.com/HSINJU-LI/Solar-radiation/blob/master/satelliteIndex2018.csv){target="_blank"}”. The clearness index data is from NASA POWER. Sky Clearness Index ~0.25 (cloudy), ~0.7 (clear).
 
 ```{r}
 #| eval: true
@@ -56,10 +59,107 @@ With the power of machine learning models, we were able to estimate fog probabil
 #| fig-align: "center"
 knitr::include_graphics("SZA.png")
 ```
-
 :::{.center-text .small-text}
-a SZA fig.
+This figure shows how zenith angles affect the incoming solar radiatioin.
 :::
+
+
+The following R code calculates 2-minute interval solar radiation estimates for a location in northeastern Taiwan throughout the year 2018.
+
+```{r}
+#Reads in sky clearness data.
+satellite_t <- read.csv("satelliteIndex2018.csv") # sky clearness index for each day
+colnames(satellite_t) <- c("Y", "m", "d", "all_sky", "Clearness")
+satellite_t[satellite_t$Clearness < 0, ] <- 0.7 # default extreme value to 0.7 (clear)
+
+#Sets latitude/longitude, time steps, and constants like solar constant (1367 W/m²).
+
+UTC <- 8  # local time zone
+Std_long <- UTC * 180 / 12
+s0 <- 1367  # solar constant
+P_MC <- 88.86  # atmospheric pressure of your ROI
+P <- P_MC
+lat <- 24.65
+long <- 121.47
+time <- seq(0, 24, 1/30)  # 2-minute interval
+time <- time[1:720]
+
+# install.packages("devtools")
+# install.packages("magicfor")
+library("devtools")
+library("magicfor")
+magic_for(print, silent = TRUE) #store the for loop results
+
+for (J in 1:365) {  # J: Julian day
+  delta <- asin(0.39785 * sin((278.97 + 0.9856 * J + 1.9165 * sin((356.6 + 0.9856 * J) * pi / 180)) * pi / 180)) * 180 / pi
+  f <- (279.575 + 0.9856 * J) * pi / 180
+  ET <- (-104.7 * sin(f) + 596.2 * sin(2 * f) + 4.3 * sin(3 * f) - 12.7 * sin(4 * f) - 429.3 * cos(f) - 2 * cos(2 * f) + 19.3 * cos(3 * f)) / 3600
+  t0 <- 12 - ((long - Std_long) / 15) - ET
+  a1 <- 360 * (J / 365) * pi / 180
+  a2 <- 1.00011 + 0.034221 * cos(a1) + 0.00128 * sin(a1) + 0.000719 * cos(2 * a1) + 0.000077 * sin(2 * a1)
+  R_top <- s0 * a2
+  h <- (time - t0) * 15
+  cosZ <- sin(lat * pi / 180) * sin(delta * pi / 180) + cos(lat * pi / 180) * cos(delta * pi / 180) * cos(h * pi / 180)
+  m <- pmax(P / 101.3 / cosZ, 0)
+  
+  R_raw <- pmax(R_top * cosZ, 0)
+  direct <- pmax(R_top * satellite_t$Clearness[J]^m * cosZ, 0) #direct solar radiation
+  diff <- 0.3 * R_top * (1 - satellite_t$Clearness[J]^m) * cosZ #diffuse solar radiation
+  surfaceR <- direct + diff
+  
+  Zenith <- acos(cosZ) * 180 / pi #Solar zenith angle
+  
+  print(surfaceR, R_raw, Zenith)
+}
+R_MC_2018 <- magic_result_as_dataframe()
+
+# add julian day and time interval column
+JulianD<-rep(1:365, each = length(time))
+tinterval<-rep(time, times = 365)
+mydt<-as.data.frame(cbind(JulianD, tinterval))
+
+R_MC_2018 <- data.frame(J = mydt$JulianD,time = mydt$tinterval, raw_R = R_MC_2018$R_raw, surface_R = R_MC_2018$surfaceR, Zenith = R_MC_2018$Zenith)
+
+```
+
+I generate two plots that compare top of atmosphere radiation, surface radiation and zenith angle of Julian day 1 and 210.
+
+```{r}
+# plot 1
+plot(R_MC_2018$time[R_MC_2018$J == 1], R_MC_2018$raw_R[R_MC_2018$J == 1], type = "l", col = "blue",
+     ylab = "Radiation (W/m²)", xlab = "Time (hours)", main = "Raw vs Surface Radiation (J=1 & J=210)",
+     ylim = range(c(R_MC_2018$raw_R, R_MC_2018$surface_R), na.rm = TRUE))  # adjust y-axis to fit all
+
+# Add surface_R for J = 1
+lines(R_MC_2018$time[R_MC_2018$J == 1], R_MC_2018$surface_R[R_MC_2018$J == 1], col = "red")
+
+# Add raw_R for J = 210
+lines(R_MC_2018$time[R_MC_2018$J == 210], R_MC_2018$raw_R[R_MC_2018$J == 210], col = "blue", lty = 2)
+
+# Add surface_R for J = 210
+lines(R_MC_2018$time[R_MC_2018$J == 210], R_MC_2018$surface_R[R_MC_2018$J == 210], col = "red", lty = 2)
+
+# Add legend
+legend("topright", legend = c("Raw R (J=1)", "Surface R (J=1)", "Raw R (J=210)", "Surface R (J=210)"),
+       col = c("blue", "red", "blue", "red"), lty = c(1, 1, 2, 2), cex = 0.8)
+
+# plot 2
+plot(R_MC_2018$time[R_MC_2018$J == 1], R_MC_2018$Zenith[R_MC_2018$J == 1], type = "l", col = "blue",
+     ylab = "Zenith", xlab = "Time (hours)", main = "Zenith angle (J=1 & J=210)",
+     ylim = range(c(R_MC_2018$Zenith), na.rm = TRUE))  # adjust y-axis to fit all
+lines(R_MC_2018$time[R_MC_2018$J == 210], R_MC_2018$Zenith[R_MC_2018$J == 210], col = "red")
+legend("bottomright", legend = c("J=1", "J=210"),
+       col = c("blue", "red"), lty = c(1, 2), cex = 0.8)
+
+```
+
+In practice, we need to consider the atmosphere effect when we calculate surface solar radiation. In this case, the solar radiation would be divided into direct and diffuse radiation, which would be computed separately. Besides the SZA, sky clearness (affected by cloud, aerosol, water vapor etc.) also needs to be considered. The sky clearness index here, which was derived from satellite data, was one day resolution. The total solar radiation equals the sum of direct and diffuse radiation. From the formula above, we know that the accuracy of solar radiation depends largely on the accuracy of sky clearness index, which is also a common problem when it comes to satellite image processing.
+
+There are many methods to calculate solar radiation and SZA. The differences include how to compute local time, or the way to compute declination of earth (delta in above code) etc. These methods are subtle differences if your scale is not too fine.
+
+#### References
+Bonan, G. (2015). Atmospheric Radiation. In Ecological Climatology: Concepts and Applications (pp. 61-73). Cambridge: Cambridge University Press. doi:10.1017/CBO9781107339200.005
+
 
 ### Deal with circular variables {#circular}
 

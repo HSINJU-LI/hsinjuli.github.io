@@ -278,6 +278,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <section id="SZA" class="level3">
 <h3 class="anchored" data-anchor-id="SZA">Computed solar zenith angle at any time point and location</h3>
+<p>The R code provided estimates theoretical solar radiation for any time and location on Earth. This is useful for understanding the Earth’s energy budget, ecosystem monitoring, and renewable energy utilization.</p>
+<p>A clearness parameter, which represents cloudiness of the sky, is needed to calculate solar radiation. The parameter is stored in “<a href="https://github.com/HSINJU-LI/Solar-radiation/blob/master/satelliteIndex2018.csv" target="_blank">satelliteIndex2018.csv</a>”. The clearness index data is from NASA POWER. Sky Clearness Index ~0.25 (cloudy), ~0.7 (clear).</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -288,8 +290,118 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="center-text small-text">
-<p>a SZA fig.</p>
+<p>This figure shows how zenith angles affect the incoming solar radiatioin.</p>
 </div>
+<p>The following R code calculates 2-minute interval solar radiation estimates for a location in northeastern Taiwan throughout the year 2018.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Reads in sky clearness data.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>satellite_t <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"satelliteIndex2018.csv"</span>) <span class="co"># sky clearness index for each day</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(satellite_t) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Y"</span>, <span class="st">"m"</span>, <span class="st">"d"</span>, <span class="st">"all_sky"</span>, <span class="st">"Clearness"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>satellite_t[satellite_t<span class="sc">$</span>Clearness <span class="sc">&lt;</span> <span class="dv">0</span>, ] <span class="ot">&lt;-</span> <span class="fl">0.7</span> <span class="co"># default extreme value to 0.7 (clear)</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#Sets latitude/longitude, time steps, and constants like solar constant (1367 W/m²).</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>UTC <span class="ot">&lt;-</span> <span class="dv">8</span>  <span class="co"># local time zone</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>Std_long <span class="ot">&lt;-</span> UTC <span class="sc">*</span> <span class="dv">180</span> <span class="sc">/</span> <span class="dv">12</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>s0 <span class="ot">&lt;-</span> <span class="dv">1367</span>  <span class="co"># solar constant</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>P_MC <span class="ot">&lt;-</span> <span class="fl">88.86</span>  <span class="co"># atmospheric pressure of your ROI</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>P <span class="ot">&lt;-</span> P_MC</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>lat <span class="ot">&lt;-</span> <span class="fl">24.65</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>long <span class="ot">&lt;-</span> <span class="fl">121.47</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>time <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">24</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">30</span>)  <span class="co"># 2-minute interval</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>time <span class="ot">&lt;-</span> time[<span class="dv">1</span><span class="sc">:</span><span class="dv">720</span>]</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("devtools")</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("magicfor")</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"devtools"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'devtools' was built under R version 4.2.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: usethis</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"magicfor"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'magicfor' was built under R version 4.2.3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">magic_for</span>(print, <span class="at">silent =</span> <span class="cn">TRUE</span>) <span class="co">#store the for loop results</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (J <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">365</span>) {  <span class="co"># J: Julian day</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  delta <span class="ot">&lt;-</span> <span class="fu">asin</span>(<span class="fl">0.39785</span> <span class="sc">*</span> <span class="fu">sin</span>((<span class="fl">278.97</span> <span class="sc">+</span> <span class="fl">0.9856</span> <span class="sc">*</span> J <span class="sc">+</span> <span class="fl">1.9165</span> <span class="sc">*</span> <span class="fu">sin</span>((<span class="fl">356.6</span> <span class="sc">+</span> <span class="fl">0.9856</span> <span class="sc">*</span> J) <span class="sc">*</span> pi <span class="sc">/</span> <span class="dv">180</span>)) <span class="sc">*</span> pi <span class="sc">/</span> <span class="dv">180</span>)) <span class="sc">*</span> <span class="dv">180</span> <span class="sc">/</span> pi</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  f <span class="ot">&lt;-</span> (<span class="fl">279.575</span> <span class="sc">+</span> <span class="fl">0.9856</span> <span class="sc">*</span> J) <span class="sc">*</span> pi <span class="sc">/</span> <span class="dv">180</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  ET <span class="ot">&lt;-</span> (<span class="sc">-</span><span class="fl">104.7</span> <span class="sc">*</span> <span class="fu">sin</span>(f) <span class="sc">+</span> <span class="fl">596.2</span> <span class="sc">*</span> <span class="fu">sin</span>(<span class="dv">2</span> <span class="sc">*</span> f) <span class="sc">+</span> <span class="fl">4.3</span> <span class="sc">*</span> <span class="fu">sin</span>(<span class="dv">3</span> <span class="sc">*</span> f) <span class="sc">-</span> <span class="fl">12.7</span> <span class="sc">*</span> <span class="fu">sin</span>(<span class="dv">4</span> <span class="sc">*</span> f) <span class="sc">-</span> <span class="fl">429.3</span> <span class="sc">*</span> <span class="fu">cos</span>(f) <span class="sc">-</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">cos</span>(<span class="dv">2</span> <span class="sc">*</span> f) <span class="sc">+</span> <span class="fl">19.3</span> <span class="sc">*</span> <span class="fu">cos</span>(<span class="dv">3</span> <span class="sc">*</span> f)) <span class="sc">/</span> <span class="dv">3600</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  t0 <span class="ot">&lt;-</span> <span class="dv">12</span> <span class="sc">-</span> ((long <span class="sc">-</span> Std_long) <span class="sc">/</span> <span class="dv">15</span>) <span class="sc">-</span> ET</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  a1 <span class="ot">&lt;-</span> <span class="dv">360</span> <span class="sc">*</span> (J <span class="sc">/</span> <span class="dv">365</span>) <span class="sc">*</span> pi <span class="sc">/</span> <span class="dv">180</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  a2 <span class="ot">&lt;-</span> <span class="fl">1.00011</span> <span class="sc">+</span> <span class="fl">0.034221</span> <span class="sc">*</span> <span class="fu">cos</span>(a1) <span class="sc">+</span> <span class="fl">0.00128</span> <span class="sc">*</span> <span class="fu">sin</span>(a1) <span class="sc">+</span> <span class="fl">0.000719</span> <span class="sc">*</span> <span class="fu">cos</span>(<span class="dv">2</span> <span class="sc">*</span> a1) <span class="sc">+</span> <span class="fl">0.000077</span> <span class="sc">*</span> <span class="fu">sin</span>(<span class="dv">2</span> <span class="sc">*</span> a1)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  R_top <span class="ot">&lt;-</span> s0 <span class="sc">*</span> a2</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  h <span class="ot">&lt;-</span> (time <span class="sc">-</span> t0) <span class="sc">*</span> <span class="dv">15</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  cosZ <span class="ot">&lt;-</span> <span class="fu">sin</span>(lat <span class="sc">*</span> pi <span class="sc">/</span> <span class="dv">180</span>) <span class="sc">*</span> <span class="fu">sin</span>(delta <span class="sc">*</span> pi <span class="sc">/</span> <span class="dv">180</span>) <span class="sc">+</span> <span class="fu">cos</span>(lat <span class="sc">*</span> pi <span class="sc">/</span> <span class="dv">180</span>) <span class="sc">*</span> <span class="fu">cos</span>(delta <span class="sc">*</span> pi <span class="sc">/</span> <span class="dv">180</span>) <span class="sc">*</span> <span class="fu">cos</span>(h <span class="sc">*</span> pi <span class="sc">/</span> <span class="dv">180</span>)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">pmax</span>(P <span class="sc">/</span> <span class="fl">101.3</span> <span class="sc">/</span> cosZ, <span class="dv">0</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  R_raw <span class="ot">&lt;-</span> <span class="fu">pmax</span>(R_top <span class="sc">*</span> cosZ, <span class="dv">0</span>)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  direct <span class="ot">&lt;-</span> <span class="fu">pmax</span>(R_top <span class="sc">*</span> satellite_t<span class="sc">$</span>Clearness[J]<span class="sc">^</span>m <span class="sc">*</span> cosZ, <span class="dv">0</span>) <span class="co">#direct solar radiation</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  diff <span class="ot">&lt;-</span> <span class="fl">0.3</span> <span class="sc">*</span> R_top <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> satellite_t<span class="sc">$</span>Clearness[J]<span class="sc">^</span>m) <span class="sc">*</span> cosZ <span class="co">#diffuse solar radiation</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  surfaceR <span class="ot">&lt;-</span> direct <span class="sc">+</span> diff</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  Zenith <span class="ot">&lt;-</span> <span class="fu">acos</span>(cosZ) <span class="sc">*</span> <span class="dv">180</span> <span class="sc">/</span> pi <span class="co">#Solar zenith angle</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(surfaceR, R_raw, Zenith)</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>R_MC_2018 <span class="ot">&lt;-</span> <span class="fu">magic_result_as_dataframe</span>()</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="co"># add julian day and time interval column</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>JulianD<span class="ot">&lt;-</span><span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">365</span>, <span class="at">each =</span> <span class="fu">length</span>(time))</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>tinterval<span class="ot">&lt;-</span><span class="fu">rep</span>(time, <span class="at">times =</span> <span class="dv">365</span>)</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>mydt<span class="ot">&lt;-</span><span class="fu">as.data.frame</span>(<span class="fu">cbind</span>(JulianD, tinterval))</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>R_MC_2018 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">J =</span> mydt<span class="sc">$</span>JulianD,<span class="at">time =</span> mydt<span class="sc">$</span>tinterval, <span class="at">raw_R =</span> R_MC_2018<span class="sc">$</span>R_raw, <span class="at">surface_R =</span> R_MC_2018<span class="sc">$</span>surfaceR, <span class="at">Zenith =</span> R_MC_2018<span class="sc">$</span>Zenith)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>I generate two plots that compare top of atmosphere radiation, surface radiation and zenith angle of Julian day 1 and 210.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot 1</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(R_MC_2018<span class="sc">$</span>time[R_MC_2018<span class="sc">$</span>J <span class="sc">==</span> <span class="dv">1</span>], R_MC_2018<span class="sc">$</span>raw_R[R_MC_2018<span class="sc">$</span>J <span class="sc">==</span> <span class="dv">1</span>], <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">col =</span> <span class="st">"blue"</span>,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Radiation (W/m²)"</span>, <span class="at">xlab =</span> <span class="st">"Time (hours)"</span>, <span class="at">main =</span> <span class="st">"Raw vs Surface Radiation (J=1 &amp; J=210)"</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">range</span>(<span class="fu">c</span>(R_MC_2018<span class="sc">$</span>raw_R, R_MC_2018<span class="sc">$</span>surface_R), <span class="at">na.rm =</span> <span class="cn">TRUE</span>))  <span class="co"># adjust y-axis to fit all</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Add surface_R for J = 1</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(R_MC_2018<span class="sc">$</span>time[R_MC_2018<span class="sc">$</span>J <span class="sc">==</span> <span class="dv">1</span>], R_MC_2018<span class="sc">$</span>surface_R[R_MC_2018<span class="sc">$</span>J <span class="sc">==</span> <span class="dv">1</span>], <span class="at">col =</span> <span class="st">"red"</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Add raw_R for J = 210</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(R_MC_2018<span class="sc">$</span>time[R_MC_2018<span class="sc">$</span>J <span class="sc">==</span> <span class="dv">210</span>], R_MC_2018<span class="sc">$</span>raw_R[R_MC_2018<span class="sc">$</span>J <span class="sc">==</span> <span class="dv">210</span>], <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Add surface_R for J = 210</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(R_MC_2018<span class="sc">$</span>time[R_MC_2018<span class="sc">$</span>J <span class="sc">==</span> <span class="dv">210</span>], R_MC_2018<span class="sc">$</span>surface_R[R_MC_2018<span class="sc">$</span>J <span class="sc">==</span> <span class="dv">210</span>], <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Add legend</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topright"</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"Raw R (J=1)"</span>, <span class="st">"Surface R (J=1)"</span>, <span class="st">"Raw R (J=210)"</span>, <span class="st">"Surface R (J=210)"</span>),</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"red"</span>), <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>), <span class="at">cex =</span> <span class="fl">0.8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot 2</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(R_MC_2018<span class="sc">$</span>time[R_MC_2018<span class="sc">$</span>J <span class="sc">==</span> <span class="dv">1</span>], R_MC_2018<span class="sc">$</span>Zenith[R_MC_2018<span class="sc">$</span>J <span class="sc">==</span> <span class="dv">1</span>], <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">col =</span> <span class="st">"blue"</span>,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Zenith"</span>, <span class="at">xlab =</span> <span class="st">"Time (hours)"</span>, <span class="at">main =</span> <span class="st">"Zenith angle (J=1 &amp; J=210)"</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">range</span>(<span class="fu">c</span>(R_MC_2018<span class="sc">$</span>Zenith), <span class="at">na.rm =</span> <span class="cn">TRUE</span>))  <span class="co"># adjust y-axis to fit all</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(R_MC_2018<span class="sc">$</span>time[R_MC_2018<span class="sc">$</span>J <span class="sc">==</span> <span class="dv">210</span>], R_MC_2018<span class="sc">$</span>Zenith[R_MC_2018<span class="sc">$</span>J <span class="sc">==</span> <span class="dv">210</span>], <span class="at">col =</span> <span class="st">"red"</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"bottomright"</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"J=1"</span>, <span class="st">"J=210"</span>),</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"red"</span>), <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">cex =</span> <span class="fl">0.8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>In practice, we need to consider the atmosphere effect. In this case, the solar radiation would be divided into direct and diffuse radiation, which would be computed separately. Besides the SZA, sky clearness (affected by cloud, aerosol, water vapor etc.) also needs to be considered. The sky clearness index here, which was derived from satellite data, was one day resolution. The total solar radiation equals the sum of direct and diffuse radiation. From the formula above, we know that the accuracy of solar radiation depends largely on the accuracy of sky clearness index, which is also a common problem when it comes to satellite image processing. There are many methods to calculate solar radiation and SZA. The differences include how to compute local time, or the way to compute declination of earth (delta in above code) etc. These methods are subtle differences if your scale is not too fine.</p>
+<section id="references" class="level4">
+<h4 class="anchored" data-anchor-id="references">References</h4>
+<p>Bonan, G. (2015). Atmospheric Radiation. In Ecological Climatology: Concepts and Applications (pp.&nbsp;61-73). Cambridge: Cambridge University Press. doi:10.1017/CBO9781107339200.005</p>
+</section>
 </section>
 <section id="circular" class="level3">
 <h3 class="anchored" data-anchor-id="circular">Deal with circular variables</h3>
@@ -318,13 +430,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Another method is to project the circular variables onto a unit circle and convert them to two-dimensional (x, y) variables. This maintains the cyclical nature of the original variables.</p>
 <p>Example in R using day of year from 1 to 365:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>doy_test <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">365</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>de_doy <span class="ot">&lt;-</span> <span class="dv">360</span> <span class="sc">*</span> doy_test <span class="sc">/</span> <span class="fu">length</span>(doy_test)  <span class="co"># Projecting to unit circle and showing as angle (deg)</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">sin</span>(de_doy), <span class="fu">cos</span>(de_doy))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>doy_test <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">365</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>de_doy <span class="ot">&lt;-</span> <span class="dv">360</span> <span class="sc">*</span> doy_test <span class="sc">/</span> <span class="fu">length</span>(doy_test)  <span class="co"># Projecting to unit circle and showing as angle (deg)</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">sin</span>(de_doy), <span class="fu">cos</span>(de_doy))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -337,8 +449,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>If you need to compute means or variances of circular variables, Pewsey et al.&nbsp;(2013) is a recommended read. The book also covers regression models for estimating circular variables.</p>
 <p>Additionally, you can consider applying <strong>Rayleigh and Watson Tests</strong> on circular data.</p>
 </section>
-<section id="references" class="level4">
-<h4 class="anchored" data-anchor-id="references">References</h4>
+<section id="references-1" class="level4">
+<h4 class="anchored" data-anchor-id="references-1">References</h4>
 <ul>
 <li><a href="https://stats.stackexchange.com/questions/148380/use-of-circular-predictors-in-linear-regression" target="_blank">Use of circular predictors in linear regression</a></li>
 <li>Pewsey, A., Neuhäuser, M., &amp; Ruxton, G. D. (2013). Circular statistics in R. Oxford University Press.</li>
