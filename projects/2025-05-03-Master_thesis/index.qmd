@@ -50,7 +50,9 @@ With the power of machine learning models, we were able to estimate fog probabil
 ### Computed solar zenith angle at any time point and location {#SZA}
 The R code provided estimates theoretical solar radiation for any time and location on Earth. This is useful for understanding the Earth’s energy budget, ecosystem monitoring, and renewable energy utilization.
 
-A clearness parameter, which represents cloudiness of the sky, is needed to calculate solar radiation. The parameter is stored in “[satelliteIndex2018.csv](https://github.com/HSINJU-LI/Solar-radiation/blob/master/satelliteIndex2018.csv){target="_blank"}”. The clearness index data is from NASA POWER. Sky Clearness Index ~0.25 (cloudy), ~0.7 (clear).
+A clearness parameter, which represents cloudiness of the sky, is needed to calculate solar radiation. The parameter is stored in “[satelliteIndex2018.csv](https://github.com/HSINJU-LI/Solar-radiation/blob/master/satelliteIndex2018.csv){target="_blank"}”. The clearness index data is downloaded from [NASA Prediction Of Worldwide Energy Resources](https://power.larc.nasa.gov/){target="_blank"}. Note: Sky Clearness Index means the surface radiation divided by the extraterrestrial radiation. If the value was closer to 1, the clearer of the sky. Generally, Sky Clearness Index ~0.25 (cloudy), ~0.7 (clear).
+
+The calculation of the solar zenith angle (SZA) follows Bonan (2015). This chapter has a detailed description about the process of SZA calculation. The solar radiation is largely dependent on the angle of sun. Thus, if we ignore the atmospheric effect, the incident solar energy would equal to top of atmosphere solar radiation multiply cosine of SZA.
 
 ```{r}
 #| eval: true
