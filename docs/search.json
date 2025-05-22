@@ -4,7 +4,7 @@
     "href": "resources.html",
     "title": "All my favorite resources!",
     "section": "",
-    "text": "another title\n\nthis is an &lt;h1&gt; element\n\n\nthis is an &lt;h1&gt; element of class title\n\n\nthis is a &lt;p&gt; element\n\n\nthis is a &lt;p&gt; element of class title\n\n— # three dashes is markdown syntax for creating a horizontal line across your page\n\nThis paragraph is orange.\n\n\nThis paragraph is centered.\n\n\nThis paragraph has no styling.\n\n\nThis level-2 header is centered\n\n\n\nThis level-3 header is both centered and orange\n\n\nThis paragraph is orange and bolded using markdown syntax (yes, you can combine markdown and html!)."
+    "text": "Heptabase:\nThese tools have been incredibly helpful for learning complex topics and played a major role in my written exam preparation. I especially like the visual layout of the cards and how they’re interconnected—it helps me better understand how different concepts relate to one another and see the bigger picture. Note that it is not free.\nNotion:\nI appreciate the search function in this note-taking software—it lets me easily find notes from over five years ago. The core idea is to avoid spending too much time learning how to use a tool; the simpler, the better.\nToggl time tracker:\nA helpful tool for discovering where all my time goes. It offers event categorization and visualizations of time spent—great for anyone aiming to achieve a better work-life balance.\nResearchRabbit:\nA useful AI tool to search for relevent papers of interested. It visualizes networks of papers and co-authorships. I found it super useful when I was preparing for my written exam."
   },
   {
     "objectID": "projects/2025-05-03-Master_thesis/index.html",
@@ -82,5 +82,26 @@
     "title": "Projects",
     "section": "",
     "text": "Spatiotemporal Dynamics of Diurnal Fog in MCFs\n\n9 min\n\n\nHsin-Ju Li\n\n\nMay 3, 2025\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "resources.html#useful-tools",
+    "href": "resources.html#useful-tools",
+    "title": "All my favorite resources!",
+    "section": "",
+    "text": "Heptabase:\nThese tools have been incredibly helpful for learning complex topics and played a major role in my written exam preparation. I especially like the visual layout of the cards and how they’re interconnected—it helps me better understand how different concepts relate to one another and see the bigger picture. Note that it is not free.\nNotion:\nI appreciate the search function in this note-taking software—it lets me easily find notes from over five years ago. The core idea is to avoid spending too much time learning how to use a tool; the simpler, the better.\nToggl time tracker:\nA helpful tool for discovering where all my time goes. It offers event categorization and visualizations of time spent—great for anyone aiming to achieve a better work-life balance.\nResearchRabbit:\nA useful AI tool to search for relevent papers of interested. It visualizes networks of papers and co-authorships. I found it super useful when I was preparing for my written exam."
+  },
+  {
+    "objectID": "resources.html#acknowledgement",
+    "href": "resources.html#acknowledgement",
+    "title": "All my favorite resources!",
+    "section": " Acknowledgement",
+    "text": "Acknowledgement\nThis website was made possible thanks to Sam Shanny-Csik’s tutorial! I was introduced to Sam’s website during a Dream Lab workshop at UCSB."
+  },
+  {
+    "objectID": "resources.html#useful-resources",
+    "href": "resources.html#useful-resources",
+    "title": "All my favorite resources!",
+    "section": " Useful resources",
+    "text": "Useful resources\n\nThe Carpentries Incubator:\nPlenty of github repo related to data analysis as a lesson format. The Dream lab at UCSB also used the repo there to hold workshops."
   }
 ]

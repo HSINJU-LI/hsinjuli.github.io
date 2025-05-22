@@ -2,28 +2,29 @@
 title: "All my favorite resources!"
 ---
 
-# another title
+## {{< fa hand-spock title="A hand" >}} Useful tools
+* [Heptabase](https://heptabase.com/){target="_blank"}:
 
-<h1> this is an `<h1>` element</h1> 
+    These tools have been incredibly helpful for learning complex topics and played a major role in my written exam preparation. I especially like the visual layout of the cards and how they're interconnected—it helps me better understand how different concepts relate to one another and see the bigger picture. Note that it is not free.
 
-<h1 class="title">this is an `<h1>` element of class `title`</h1>
+* [Notion](https://www.notion.com/){target="_blank"}:
 
-<p>this is a `<p>` element</p>
+    I appreciate the search function in this note-taking software—it lets me easily find notes from over five years ago. The core idea is to avoid spending too much time learning how to use a tool; the simpler, the better.
 
-<p class="title">this is a `<p>` element of class `title`</p>
-  
---- # three dashes is markdown syntax for creating a horizontal line across your page
+* [Toggl time tracker](https://toggl.com/?utm_term=toggl&utm_campaign=HD-Toggl-Search-NA-Brand&utm_source=adwords&utm_medium=ppc&hsa_acc=8476800569&hsa_cam=22025431872&hsa_grp=172941228915&hsa_ad=725588056269&hsa_src=g&hsa_tgt=kwd-300770288873&hsa_kw=toggl&hsa_mt=e&hsa_net=adwords&hsa_ver=3&gad_source=1&gad_campaignid=22025431872&gbraid=0AAAAADkDxVPvebwg0tntFyNwVXZLB6ymy&gclid=CjwKCAjw87XBBhBIEiwAxP3_A-JIhZqbDLpzX6oZCMmbUzLq6UNdCt4bFurTxZdyRcMSicT03YS1WRoC-UwQAvD_BwE){target="_blank"}:
 
-<p class="orange-text">This paragraph is orange.</p>
+    A helpful tool for discovering where all my time goes. It offers event categorization and visualizations of time spent—great for anyone aiming to achieve a better work-life balance.
 
-<p class="center-text">This paragraph is centered.</p>
+* [ResearchRabbit](https://www.researchrabbit.ai/){target="_blank"}:
 
-<p>This paragraph has no styling.</p>
+    A useful AI tool to search for relevent papers of interested. It visualizes networks of papers and co-authorships. I found it super useful when I was preparing for my written exam.
 
-<h2 class="center-text">This level-2 header is centered</h2>
+## {{< fa book title="A book">}} Useful resources
 
----
-  
-<h3 class="center-text orange-text">This level-3 header is both centered and orange</h2>
-  
-<p class="orange-text">**This paragraph is orange and bolded using markdown syntax (yes, you can combine markdown and html!).**</p>
+* [The Carpentries Incubator](https://github.com/carpentries-incubator){target="_blank"}:
+
+    Plenty of github repo related to data analysis as a lesson format. The Dream lab at UCSB also used the repo there to hold workshops.
+
+
+## {{< fa pencil title="A pencil" >}} Acknowledgement
+This website was made possible thanks to [Sam Shanny-Csik's tutorial](https://ucsb-meds.github.io/creating-quarto-websites/){target="_blank"}! I was introduced to Sam's website during a Dream Lab workshop at UCSB.
