@@ -4,6 +4,7 @@ project:
 
 website:
   title: "Hsin-Ju Li"
+  favicon: /media/Tree_of_Life.png
   navbar:
     title: false # override printing your website `title` (e.g. "Sam Csik" on line 6) in the top left corner of your navbar
     logo: /media/Tree_of_Life.svg
