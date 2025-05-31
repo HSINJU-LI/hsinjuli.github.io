@@ -1,0 +1,12 @@
+{
+  "hash": "bee512ed6d87cb7659bef0f9e858e090",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"HRV rate\"\ndescription: \"This is a side project to practice data visualization using my own Garmin record\"\nauthor:\n  - name: Hsin-Ju Li\ndate: 05-30-2025\ncategories: [Data Analysis] # self-defined categories\nimage: CL_fog.jpg\ndraft: True # setting this to `true` will prevent your post from appearing on your listing page until you're ready!\n---\n\n## Test py\n\n::: {#9b5a6d4c .cell execution_count=1}\n``` {.python .cell-code}\nx = 5\ny = 3\nprint(x + y)\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n8\n```\n:::\n:::\n\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}
