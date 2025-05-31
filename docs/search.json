@@ -103,5 +103,19 @@
     "title": "All my favorite resources!",
     "section": " Useful resources",
     "text": "Useful resources\n\nThe Carpentries Incubator:\nPlenty of github repo related to data analysis as a lesson format. The Dream lab at UCSB also used the repo there to hold workshops."
+  },
+  {
+    "objectID": "projects/2025-05-30-Garmin_Data/index.html",
+    "href": "projects/2025-05-30-Garmin_Data/index.html",
+    "title": "HRV rate",
+    "section": "",
+    "text": "x = 5\ny = 3\nprint(x + y)\n\n8"
+  },
+  {
+    "objectID": "projects/2025-05-30-Garmin_Data/index.html#test-py",
+    "href": "projects/2025-05-30-Garmin_Data/index.html#test-py",
+    "title": "HRV rate",
+    "section": "",
+    "text": "x = 5\ny = 3\nprint(x + y)\n\n8"
   }
 ]
