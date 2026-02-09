@@ -1,14 +1,28 @@
 ---
-title: "This is just a post test"
-description: "blog post description (appears underneath the title in smaller text) which is included on the listing page"
+title: "Some useful mindsets as a PhD student"
+description: "Every PhD journey is unique, read with cautious!"
 author:
   - name: Hsin-Ju Li
     url: https://github.com/HSINJU-LI
     orcid: 0009-0008-7610-8276
     affiliation: UCSB Geography
     affiliation-url: https://www.geog.ucsb.edu/ 
-date: 04-29-2025
-categories: [Quarto] # self-defined categories
+date: 02-08-2026
+categories: [PhD] # self-defined categories
+
+<h1> Applying for funding: Dealing with rejection </h1>
+<p> Rejection is not failure. </p>
+
+<h1> See the forest before looking into trees </h1>
+
+<h1> Work smart but not hard </h1>
+<p> set goal first, set priority </p>
+
+<h1> Write down the details! </h1>
+<p> nothing is too small to type it down </p>
+
+<h1> How do you feel right now? </h1>
+
 citation: 
   url: https://HSINJU-LI.github.io/posts/2025-04-29-a_test_post/ 
 image: Tree_of_Life_900.PNG
